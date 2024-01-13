@@ -1,0 +1,1 @@
+appadmin:x:${USER_ID}:${GROUP_ID}::/home/appadmin:/bin/bash
