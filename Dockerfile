@@ -1,9 +1,12 @@
 # Use Red Hat UBI 8 as the base image
 FROM registry.access.redhat.com/ubi8/ubi:latest
 
+#Maintainer
+MAINTAINER "Amit Thakur" <amitthk>
+
 # Update system and install necessary tools
 RUN yum update -y && \
-    yum install -y wget tar gzip unzip gettext nss_wrapper
+    yum install -y wget tar gzip unzip gettext nss_wrapper gcc gcc-c++ make git libffi-devel
 
 # Create a non-root user 'appadmin'
 RUN useradd -m -s /bin/bash appadmin
@@ -13,6 +16,7 @@ RUN useradd -m -s /bin/bash appadmin
 COPY files/install-java.sh /install-java.sh
 COPY files/install-maven.sh /install-maven.sh
 COPY files/install-nodejs.sh /install-nodejs.sh
+COPY files/install-yarn.sh /install-yarn.sh
 COPY files/install-python.sh /install-python.sh
 COPY files/install-golang.sh /install-golang.sh
 COPY files/install-jupyter.sh /install-jupyter.sh
@@ -27,15 +31,18 @@ RUN chmod +x /install-java.sh \
     && chmod +x /install-golang.sh \
     && chmod +x /install-jupyter.sh \
     && chmod +x /install-awscli.sh \
-    && chmod +x /install-theia.sh
+    && chmod +x /install-theia.sh \
+    && chmod +x /install-yarn.sh 
 
 # Execute installation scripts
 RUN /install-java.sh \
     && /install-maven.sh \
     && /install-nodejs.sh \
+    && /install-yarn.sh \
     && /install-python.sh \
-    && /install-golang.sh \
-    && /install-jupyter.sh \
+    && /install-golang.sh
+
+RUN install-jupyter.sh \
     && /install-awscli.sh \
     && /install-theia.sh
 
