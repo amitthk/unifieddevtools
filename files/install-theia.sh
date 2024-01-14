@@ -2,7 +2,7 @@
 # Install Theia Web IDE
 
 # Install necessary dependencies for Theia
-yum install -y git
+yum install -y git libx11-devel libxkbfile-devel libsecret-devel
 
 python3 -m pip install gyp
 
@@ -11,7 +11,7 @@ git clone https://github.com/eclipse-theia/theia.git /opt/theia
 
 # Navigate to the Theia directory
 cd /opt/theia
-git checkout -tag v1.45.0 -b master
+git checkout -tag v1.39.0 -b master
 
 # Install and build Theia using Yarn
 yarn

@@ -21,7 +21,6 @@ COPY files/install-python.sh /install-python.sh
 COPY files/install-golang.sh /install-golang.sh
 COPY files/install-jupyter.sh /install-jupyter.sh
 COPY files/install-awscli.sh /install-awscli.sh
-COPY files/install-theia.sh /install-theia.sh
 
 # Make scripts executable
 RUN chmod +x /install-java.sh \
@@ -31,7 +30,6 @@ RUN chmod +x /install-java.sh \
     && chmod +x /install-golang.sh \
     && chmod +x /install-jupyter.sh \
     && chmod +x /install-awscli.sh \
-    && chmod +x /install-theia.sh \
     && chmod +x /install-yarn.sh 
 
 # Execute installation scripts
@@ -40,11 +38,9 @@ RUN /install-java.sh \
     && /install-nodejs.sh \
     && /install-yarn.sh \
     && /install-python.sh \
-    && /install-golang.sh
-
-RUN install-jupyter.sh \
-    && /install-awscli.sh \
-    && /install-theia.sh
+    && /install-golang.sh \
+    && /install-jupyter.sh \
+    && /install-awscli.sh
 
 # Set environment variables for Java and Maven
 ENV JAVA_HOME=/opt/zulu21.30.15-ca-jdk21.0.1-linux_x64
@@ -62,6 +58,13 @@ COPY files/run-java.sh /run-java.sh
 COPY files/run-python.sh /run-python.sh
 COPY files/run-nodejs.sh /run-nodejs.sh
 COPY files/passwd.template /home/appadmin/passwd.template
+
+# # Copy Theia installation script
+# COPY files/install-theia.sh /install-theia.sh
+
+# # Execute Theia installation script
+# RUN chmod +x /install-theia.sh \
+# && /install-theia.sh
 
 # Make entrypoint and run scripts executable
 RUN chmod +x /entrypoint.sh \
