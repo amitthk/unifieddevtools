@@ -9,3 +9,5 @@ This image contains the necessary dev tools for developer along with theia web-i
 * awscli
 * jupyter notebook
 * theia
+
+Added workflow file.
