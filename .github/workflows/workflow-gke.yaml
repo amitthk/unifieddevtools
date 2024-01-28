@@ -11,7 +11,7 @@ env:
   GKE_ZONE: us-central1   # cluster zone
   IMAGE: unifieddevtools # image name
   IMAGE_TAG: latest # image tag
-  GAR_ZONE: us-central1 # artifact registry zone
+  GAR_ZONE: us # artifact registry zone
   GAR_REPO: stridecal-docker # artifact registry repository
 
 jobs:
