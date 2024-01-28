@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    move2kube.konveyor.io/service: unifieddevtools
+  name: unifieddevtools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      move2kube.konveyor.io/service: unifieddevtools
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        move2kube.konveyor.io/service: unifieddevtools
+      name: unifieddevtools
+    spec:
+      containers:
+        - image: us-docker.pkg.dev/stridecal-web-dev-409409/stridecal-docker/unifieddevtools:latest
+          imagePullPolicy: Always
+          name: unifieddevtools
+          env:
+            - name: EUREKA_HOST
+              value: eureka-server
+            - name: ZIPKIN_HOST
+              value: zipkin
+            - name: CONFIG_SERVER_HOST
+              value: config-server
+          ports:
+            - containerPort: 8888
+              protocol: TCP
+            - containerPort: 3000
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
