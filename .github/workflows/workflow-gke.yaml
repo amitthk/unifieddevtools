@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: autopilot-cluster-1    # cluster name
-  GKE_ZONE: us-central-1   # cluster zone
+  GKE_ZONE: us-central1   # cluster zone
   IMAGE: unifieddevtools # image name
   IMAGE_TAG: latest # image tag
   GAR_ZONE: us-central1 # artifact registry zone
