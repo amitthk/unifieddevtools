@@ -12,7 +12,6 @@ env:
   IMAGE: unifieddevtools # image name
   IMAGE_TAG: latest # image tag
   GAR_ZONE: us # artifact registry zone
-  GAR_REPO: stridecal-docker # artifact registry repository
 
 jobs:
   setup-build-publish-deploy:
