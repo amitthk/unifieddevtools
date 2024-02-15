@@ -8,6 +8,8 @@ MAINTAINER "Amit Thakur" <amitthk>
 RUN yum update -y && \
     yum install -y wget tar gzip unzip gettext nss_wrapper gcc gcc-c++ make git libffi-devel
 
+RUN yum update -y sqlite-libs python3-libs platform-python
+
 # Create a non-root user 'appadmin'
 RUN useradd -m -s /bin/bash appadmin
 
